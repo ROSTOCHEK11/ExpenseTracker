@@ -11,8 +11,6 @@ namespace ExpenseTracker.Core.Models
 		public int Id { get; set; }
 		public decimal Amount { get; set; }
         public DateTime Date { get; set; }
-
         public int SavingId { get; set; }
-        public Saving Saving { get; set; }
     }
 }

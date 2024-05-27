@@ -14,13 +14,8 @@ namespace ExpenseTracker.Core.Models
         public decimal TargetAmount { get; set; }
 		public List<SavedAmount> SavedAmounts { get; set; } = new();
         public DateTime Date { get; set; }
-
-
-		public int UserId { get; set; }
-		public User User { get; set; }
-
+		public string UserId { get; set; }
 		public int CategoryId { get; set; }
-		public Category Category { get; set; }
 
 	}
 }

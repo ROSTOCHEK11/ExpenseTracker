@@ -11,18 +11,9 @@ namespace ExpenseTracker.Core.Models
 		public int Id { get; set; }
         public DateTime StartDate { get; set; } = DateTime.Now;
 		public DateTime EndDate { get; set; } = DateTime.Now.AddDays(1);
-
-
-		public int UserId { get; set; }
-		public User User { get; set; }
-
-		public int TransactionId { get; set; }
-        public Transaction Transaction { get; set; }
-
-        public int IncomeId { get; set; }
-		public Income Income { get; set; }
-
-        public int SavingId { get; set; }
-		public Saving Saving { get; set; }
+		public string UserId { get; set; }
+		public List<Transaction> Transactions { get; set; } = new List<Transaction>();
+		public List<Income> Incomes { get; set; } = new List<Income>();
+		public List<Saving> Savings { get; set; } = new List<Saving>();
 	}
 }
