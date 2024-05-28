@@ -19,7 +19,7 @@ namespace ExpenseTracker.DataAccess.Entities
 		[Required]
 		public string LastName { get; set; }
 
-		public string Photo { get; set; }
+		public string? Photo { get; set; }
 
 		public string? RefreshToken { get; set; }
 		public DateTime RefreshTokenExpireTime { get; set; }

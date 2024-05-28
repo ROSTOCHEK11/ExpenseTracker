@@ -1,5 +1,7 @@
+using ExpenseTracker.Application.Services;
 using ExpenseTracker.Core.Models;
 using ExpenseTracker.DataAccess;
+using ExpenseTracker.DataAccess.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -15,9 +17,11 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("local") ?? throw new InvalidOperationException("Connection string is not found.");
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
+builder.Services.AddScoped<UserAuthService>();
+
 
 //Identity
-builder.Services.AddIdentity<AppUser, IdentityRole>().
+builder.Services.AddIdentity<AppUserEntity, IdentityRole>().
 	AddEntityFrameworkStores<AppDbContext>().
 	AddDefaultTokenProviders();
 
