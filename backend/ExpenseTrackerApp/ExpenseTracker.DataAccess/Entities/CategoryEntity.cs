@@ -1,5 +1,4 @@
-﻿using ExpenseTracker.Core.Types;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -19,7 +18,7 @@ namespace ExpenseTracker.DataAccess.Entities
 		public string Title { get; set; }
 
 		public string Icon { get; set; }
-		public CategoryType Type { get; set; }
+		public CategoryTypeEntity Type { get; set; }
 
 		public ICollection<IncomeEntity> Incomes { get; set; } = new List<IncomeEntity>();
 		public ICollection<SavingEntity> Savings { get; set; } = new List<SavingEntity>();

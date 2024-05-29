@@ -17,7 +17,7 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("local") ?? throw new InvalidOperationException("Connection string is not found.");
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
-builder.Services.AddScoped<UserAuthService>();
+builder.Services.AddScoped<IUserAuthService, UserAuthService>();
 
 
 //Identity

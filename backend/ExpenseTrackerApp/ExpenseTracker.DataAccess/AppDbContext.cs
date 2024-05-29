@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using ExpenseTracker.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -9,9 +9,9 @@ namespace ExpenseTracker.Api.Controllers
 	[ApiController]
 	public class UserController : ControllerBase
 	{
-		private readonly UserAuthService _userAuthService;
+		private readonly IUserAuthService _userAuthService;
 
-		public UserController(UserAuthService userAuthService)
+		public UserController(IUserAuthService userAuthService)
         {
 			_userAuthService = userAuthService;
 		}
@@ -35,6 +35,37 @@ namespace ExpenseTracker.Api.Controllers
 			}
 				
 		}
-		
+
+
+		// route/login
+		[HttpPost("login")]
+		public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
+
+			var loginResult = await _userAuthService.LoginAsync(loginDto);
+
+			if (loginResult.IsSucceed)
+			{
+				return Ok(loginResult);
+			}
+			else
+			{
+				return Unauthorized(loginResult);
+			}
+
+			
+		}
+
+
+
+
+
+
+
+
 	}
 }
