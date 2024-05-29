@@ -18,6 +18,7 @@ var connectionString = builder.Configuration.GetConnectionString("local") ?? thr
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddScoped<IUserAuthService, UserAuthService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 
 //Identity

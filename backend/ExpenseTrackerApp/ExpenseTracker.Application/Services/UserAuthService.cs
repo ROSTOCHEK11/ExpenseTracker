@@ -15,10 +15,12 @@ namespace ExpenseTracker.Application.Services
 	public class UserAuthService : IUserAuthService
 	{
 		private readonly UserManager<AppUserEntity> _userManager;
+		private readonly ITokenService _tokenService;
 
-		public UserAuthService(UserManager<AppUserEntity> userManager)
+		public UserAuthService(UserManager<AppUserEntity> userManager, ITokenService tokenService)
 		{
 			_userManager = userManager;
+			_tokenService = tokenService;
 		}
 
 		public async Task<AuthResponseDto> RegisterAsync(RegisterDto registerDto)
@@ -105,10 +107,14 @@ namespace ExpenseTracker.Application.Services
 				};
 			}
 
+
+			var token = _tokenService.GenerateToken(user); 
+
 			return new AuthResponseDto()
 			{
 				IsSucceed = true,
-				Message = "Login Success"
+				Message = "Login Success",
+				Token = token
 			};
 		}
 

@@ -10,10 +10,12 @@ namespace ExpenseTracker.Api.Controllers
 	public class UserController : ControllerBase
 	{
 		private readonly IUserAuthService _userAuthService;
+		private readonly ITokenService _tokenService;
 
-		public UserController(IUserAuthService userAuthService)
+		public UserController(IUserAuthService userAuthService, ITokenService tokenService)
         {
 			_userAuthService = userAuthService;
+			_tokenService = tokenService;
 		}
 
         // route/register
